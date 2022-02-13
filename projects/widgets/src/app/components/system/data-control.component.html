@@ -1,1 +1,18 @@
-<p>data-control works!</p>
+
+<form
+  class="data-control__form"
+  [formGroup]="dataControlForm"
+>
+  <tui-input-date-range
+    tuiUnfinishedValidator="Finish filling the field"
+    formControlName="timePeriod"
+    [min]="TIME_BORDERS.min"
+    [max]="TIME_BORDERS.max"
+  >
+    Choose dates
+
+    <input
+      tuiTextfield
+      placeholder="From - To" />
+  </tui-input-date-range>
+</form>

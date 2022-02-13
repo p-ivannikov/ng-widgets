@@ -1,0 +1,12 @@
+:host(.data-control) {
+  display: flex;
+  font: var(--font-size-base) var(--family);
+  padding: 1em 0;
+  justify-content: center;
+}
+
+.data-control {
+  &__form {
+    flex: 0 1 50%;
+  }
+}

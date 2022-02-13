@@ -14,7 +14,7 @@
   display: grid;
   height: 100%;
   grid-template-columns: 20rem 1fr;
-  grid-template-rows: 3.5rem 1fr;
+  grid-template-rows: min-content 1fr;
 
   &__bar {
     grid-row: 1 / 3;
