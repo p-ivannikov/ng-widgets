@@ -2,5 +2,127 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "widgets": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/widgets",
+      "sourceRoot": "projects/widgets/src",
+      "prefix": "wg",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/widgets",
+            "index": "projects/widgets/src/index.html",
+            "main": "projects/widgets/src/main.ts",
+            "polyfills": "projects/widgets/src/polyfills.ts",
+            "tsConfig": "projects/widgets/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/widgets/src/favicon.ico",
+              "projects/widgets/src/assets"
+            ],
+            "styles": [
+              "projects/widgets/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/widgets/src/environments/environment.ts",
+                  "with": "projects/widgets/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "widgets:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "widgets:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "widgets:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/widgets/src/test.ts",
+            "polyfills": "projects/widgets/src/polyfills.ts",
+            "tsConfig": "projects/widgets/tsconfig.spec.json",
+            "karmaConfig": "projects/widgets/karma.conf.js",
+            "assets": [
+              "projects/widgets/src/favicon.ico",
+              "projects/widgets/src/assets"
+            ],
+            "styles": [
+              "projects/widgets/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/widgets/tsconfig.app.json",
+              "projects/widgets/tsconfig.spec.json",
+              "projects/widgets/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/widgets/e2e/protractor.conf.js",
+            "devServerTarget": "widgets:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "widgets:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "widgets"
 }
