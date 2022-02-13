@@ -7,6 +7,6 @@ import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  @HostBinding('class.widgets')
+  @HostBinding('class.root')
   readonly baseCss: boolean = true;
 }
