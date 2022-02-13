@@ -1,0 +1,11 @@
+.root {
+  font: var(--font-size-base) var(--family);
+}
+
+.app-container {
+  height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}

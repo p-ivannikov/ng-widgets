@@ -92,6 +92,7 @@
               "projects/widgets/src/assets"
             ],
             "styles": [
+              "../node_modules/normalize.css/normalize.css",
               "projects/widgets/src/styles.scss"
             ],
             "scripts": []
