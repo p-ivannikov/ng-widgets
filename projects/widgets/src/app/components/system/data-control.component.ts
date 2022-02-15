@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, HostBinding, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { TuiDay, TuiDayRange } from '@taiga-ui/cdk';
+import { StoreService } from '../../core/services/store.service';
 import { TimeBorder } from '../core';
 
 @Component({
@@ -21,7 +22,8 @@ export class DataControlComponent implements OnInit {
 
   readonly dataControlForm;
   constructor(
-    private readonly fb: FormBuilder
+    private readonly fb: FormBuilder,
+    private readonly store: StoreService
   ) {
     this.dataControlForm = this.fb.group({
       timePeriod: this.fb.control(null)
@@ -29,6 +31,7 @@ export class DataControlComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.store.loadForecast();
   }
 
 }

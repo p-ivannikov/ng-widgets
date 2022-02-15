@@ -10,6 +10,17 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SystemModule } from './components';
+import {
+  HttpClientModule,
+  HTTP_INTERCEPTORS
+} from '@angular/common/http';
+import {
+  apiBasePathFactory,
+  API_BASE_PATH,
+  AuthentificationInterceptor,
+  yandexIdFactory,
+  YANDEX_ID
+} from './core';
 
 @NgModule({
   declarations: [
@@ -17,6 +28,7 @@ import { SystemModule } from './components';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     TuiRootModule,
     BrowserAnimationsModule,
     TuiNotificationsModule,
@@ -26,6 +38,19 @@ import { SystemModule } from './components';
     {
       provide: TUI_SANITIZER,
       useClass: NgDompurifySanitizer
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthentificationInterceptor,
+      multi: true
+    },
+    {
+      provide: API_BASE_PATH,
+      useFactory: apiBasePathFactory
+    },
+    {
+      provide: YANDEX_ID,
+      useFactory: yandexIdFactory
     }
   ],
   bootstrap: [AppComponent]
