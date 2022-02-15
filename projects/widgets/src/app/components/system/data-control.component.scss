@@ -6,6 +6,13 @@
 }
 
 .data-control {
+  &-form {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    grid-template-rows: 1fr;
+    column-gap: 1rem;
+  }
+
   &__form {
     flex: 0 1 50%;
   }

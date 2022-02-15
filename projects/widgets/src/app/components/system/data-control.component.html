@@ -1,7 +1,8 @@
 
 <form
-  class="data-control__form"
+  class="data-control__form data-control-form"
   [formGroup]="dataControlForm"
+  (ngSubmit)="loadData()"
 >
   <tui-input-date-range
     tuiUnfinishedValidator="Finish filling the field"
@@ -15,4 +16,11 @@
       tuiTextfield
       placeholder="From - To" />
   </tui-input-date-range>
+  <button
+    tuiButton
+    type="submit"
+    [disabled]="dataControlForm.invalid"
+  >
+    Load data
+  </button>
 </form>

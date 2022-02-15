@@ -18,13 +18,13 @@ export class PortalApiService {
     private readonly httpClient: HttpClient
   ) { }
 
-  getWeatherHistory(): Observable<CityWeatherDto> {
+  getWeatherForecast(days?: number): Observable<CityWeatherDto> {
     const url: string = [
       `${this.apiPath}/forecast?`,
       `lat=${PortalApiService.lat}`,
       `&lon=${PortalApiService.lon}`,
       `&lang=${PortalApiService.lang}`,
-      `&limit=${PortalApiService.limit}`
+      `&limit=${days || PortalApiService.limit}`
     ].join('');
 
     return this.httpClient.get(url) as Observable<CityWeatherDto>;

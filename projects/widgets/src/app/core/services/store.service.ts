@@ -20,8 +20,8 @@ export class StoreService {
     this.forecast$ = this._forecast$$.asObservable();
   }
 
-  loadForecast(): void {
-    this.portalApiService.getWeatherHistory()
+  loadForecast(days?: number): void {
+    this.portalApiService.getWeatherForecast(days)
       .pipe(
         untilDestroyed(this),
         take(1)

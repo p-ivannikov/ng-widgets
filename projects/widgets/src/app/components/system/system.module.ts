@@ -4,7 +4,7 @@ import { DataControlComponent } from './data-control.component';
 import { SafeAny } from '../core';
 import { TuiInputDateRangeModule } from '@taiga-ui/kit';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TuiTextfieldControllerModule } from '@taiga-ui/core';
+import { TuiButtonModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
 
 const EXPORTS: SafeAny[] = [DataControlComponent];
 
@@ -18,7 +18,8 @@ const EXPORTS: SafeAny[] = [DataControlComponent];
     FormsModule,
     ReactiveFormsModule,
     TuiTextfieldControllerModule,
-    TuiInputDateRangeModule
+    TuiInputDateRangeModule,
+    TuiButtonModule
   ]
 })
 export class SystemModule { }
