@@ -2,11 +2,26 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DataControlComponent } from './data-control.component';
 import { SafeAny } from '../core';
-import { TuiInputDateRangeModule } from '@taiga-ui/kit';
+import {
+  TuiComboBoxModule,
+  TuiDataListWrapperModule,
+  TuiInputDateRangeModule,
+  TuiSelectModule,
+  TuiStringifyContentPipeModule
+} from '@taiga-ui/kit';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TuiButtonModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
+import {
+  TuiButtonModule,
+  TuiDataListModule,
+  TuiLabelModule,
+  TuiTextfieldControllerModule
+} from '@taiga-ui/core';
+import { WidgetsBarComponent } from './widgets-bar.component';
 
-const EXPORTS: SafeAny[] = [DataControlComponent];
+const EXPORTS: SafeAny[] = [
+  DataControlComponent,
+  WidgetsBarComponent
+];
 
 @NgModule({
   declarations: [
@@ -19,7 +34,13 @@ const EXPORTS: SafeAny[] = [DataControlComponent];
     ReactiveFormsModule,
     TuiTextfieldControllerModule,
     TuiInputDateRangeModule,
-    TuiButtonModule
+    TuiButtonModule,
+    TuiSelectModule,
+    TuiComboBoxModule,
+    TuiDataListModule,
+    TuiDataListWrapperModule,
+    TuiStringifyContentPipeModule,
+    TuiLabelModule
   ]
 })
 export class SystemModule { }

@@ -1,0 +1,50 @@
+
+<form class="widgets-form" [formGroup]="widgetsForm">
+  <tui-select formControlName="chartType">
+    Chart type
+    <tui-data-list *tuiDataList>
+      <button *ngFor="let item of charts" tuiOption [value]="item.type">
+        {{item.toString()}}
+      </button>
+    </tui-data-list>
+  </tui-select>
+  <label tuiLabel label="Data for X">
+    <tui-combo-box
+      formControlName="axisX"
+      [stringify]="stringifyAxis"
+      [tuiTextfieldLabelOutside]="true"
+    >
+      Select value
+      <tui-data-list-wrapper
+        *tuiDataList
+        [items]="axisSource"
+        [itemContent]="stringifyAxis | tuiStringifyContent"
+      ></tui-data-list-wrapper>
+    </tui-combo-box>
+  </label>
+  <label tuiLabel label="Data for Y">
+    <tui-combo-box
+      formControlName="axisY"
+      [stringify]="stringifyAxis"
+      [tuiTextfieldLabelOutside]="true"
+    >
+      Select value
+      <tui-data-list-wrapper
+        *tuiDataList
+        [items]="axisSource"
+        [itemContent]="stringifyAxis | tuiStringifyContent"
+      ></tui-data-list-wrapper>
+    </tui-combo-box>
+  </label>
+  <button
+    tuiButton
+    type="submit"
+    [disabled]="widgetsForm.invalid"
+  >
+    Add widget
+  </button>
+</form>
+
+<ng-template #itemLabel let-data>
+  {{ data.label }}
+</ng-template>
